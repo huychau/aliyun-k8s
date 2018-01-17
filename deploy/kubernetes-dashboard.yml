@@ -111,7 +111,7 @@ metadata:
   name: kubernetes-dashboard
   namespace: kube-system
 spec:
-  type: ClusterIP
+  type: LoadBalancer
   clusterIP: None
   ports:
   - port: 80
