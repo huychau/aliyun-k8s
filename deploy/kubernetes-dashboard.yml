@@ -112,6 +112,7 @@ metadata:
   namespace: kube-system
 spec:
   type: ClusterIP
+  clusterIP: None
   ports:
   - port: 80
     targetPort: 9090
