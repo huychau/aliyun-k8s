@@ -112,7 +112,6 @@ metadata:
   namespace: kube-system
 spec:
   type: LoadBalancer
-  clusterIP: None
   ports:
   - port: 80
     targetPort: 9090
