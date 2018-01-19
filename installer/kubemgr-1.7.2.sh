@@ -253,16 +253,16 @@ EOF
 
     kubectl apply -f https://raw.githubusercontent.com/kubernetes/kops/master/addons/kubernetes-dashboard/v1.7.0.yaml
 
-    # kubectl apply -f $OSS_URL/conf/ingress-controller-summary.yml
+    kubectl apply -f $OSS_URL/conf/ingress-controller-summary.yml
     kubectl apply -f https://raw.githubusercontent.com/kubernetes/kops/master/addons/monitoring-standalone/v1.7.0.yaml
 
 
-    # kubectl apply -f $OSS_URL/conf/cloud-controller-manager.yml
+    kubectl apply -f $OSS_URL/conf/cloud-controller-manager.yml
 
     kubectl taint nodes --all node-role.kubernetes.io/master-
     #show pods
-    # kubectl --namespace=kube-system get po
-    # echo kubectl --namespace=kube-system get po
+    kubectl --namespace=kube-system get po
+    echo kubectl --namespace=kube-system get po
 
     # kubectl run nginx --image=$REGISTRY_URL/spacexnice/nginx:latest --replicas=2 --labels run=nginx
     # kubectl expose deployment nginx --port=80 --target-port=80 --type=LoadBalancer
