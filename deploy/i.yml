@@ -6,8 +6,8 @@ metadata:
 spec:
   rules:
   - http:
-    paths:
-    - backend:
-        serviceName: kubernetes-dashboard
-        servicePort: 80
-      path: /ui
+      paths:
+      - backend:
+          serviceName: kubernetes-dashboard
+          servicePort: 80
+        path: /ui
