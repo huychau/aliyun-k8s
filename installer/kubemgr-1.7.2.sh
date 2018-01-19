@@ -247,18 +247,19 @@ EOF
     sed -i "/- cluster:/a \    server: https://$EXTRA_SANS:6443" /etc/kubernetes/kube.conf
 
     # curl -ssL $OSS_URL/conf/flannel-vpc-rbac.yml> /etc/kubernetes/manifests/flannel-vpc-rbac.yml
-    # curl --retry 5 -LsS $OSS_URL/conf/flannel-vpc-rbac.yml > vpc.yml
-    # sed -i "s#172.16.0.0/16#$CONTAINER_CIDR#g" vpc.yml
-    # kubectl apply -f vpc.yml
+    curl --retry 5 -LsS $OSS_URL/conf/flannel-vpc-rbac.yml > vpc.yml
+    sed -i "s#172.16.0.0/16#$CONTAINER_CIDR#g" vpc.yml
+    kubectl apply -f vpc.yml
 
-    # kubectl apply -f $OSS_URL/conf/kubernetes-dashboard-1.6.0.yaml
+    kubectl apply -f https://raw.githubusercontent.com/kubernetes/kops/master/addons/kubernetes-dashboard/v1.7.0.yaml
 
     # kubectl apply -f $OSS_URL/conf/ingress-controller-summary.yml
-    # kubectl apply -f $OSS_URL/conf/heapster.yml
+    kubectl apply -f https://raw.githubusercontent.com/kubernetes/kops/master/addons/monitoring-standalone/v1.7.0.yaml
+
 
     # kubectl apply -f $OSS_URL/conf/cloud-controller-manager.yml
 
-    # kubectl taint nodes --all node-role.kubernetes.io/master-
+    kubectl taint nodes --all node-role.kubernetes.io/master-
     #show pods
     # kubectl --namespace=kube-system get po
     # echo kubectl --namespace=kube-system get po
