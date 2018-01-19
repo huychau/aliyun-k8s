@@ -111,10 +111,10 @@ metadata:
   name: kubernetes-dashboard
   namespace: kube-system
 spec:
-  type: LoadBalancer
+  type: NodePort
   ports:
   - port: 80
     targetPort: 9090
+    nodePort: 30001
   selector:
     app: kubernetes-dashboard
-    # test
